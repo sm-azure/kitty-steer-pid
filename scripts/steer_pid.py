@@ -9,7 +9,7 @@ class SteerPID(object):
 	def __init__(self):
 		self._sub_cte = rospy.Subscriber("/kitt/img_process/cte/", Int16 ,self.cte_callback)
 	        self._pub_steer = rospy.Publisher("/kitt/steer_pid/value", Int16, queue_size = 1)
-		self.pid = PID(1, 0.0, 0.0, setpoint=0)
+		self.pid = PID(0.5, 0.0, 0, setpoint=0)
 		self.pid.sample_time = 0.01 
 		self.pid.output_limits = (-100, 100)
 
